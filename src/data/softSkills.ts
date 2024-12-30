@@ -6,27 +6,27 @@ interface SoftSkill {
 const softSkills: SoftSkill[] = [
     {
         name: "設計與發想",
-        icon: "tools-fill"
+        icon: "design"
     },
     {
         name: "溝通與簡報",
-        icon: "group-fill"
+        icon: "textsms"
     },
     {
         name: "團隊協作",
-        icon: "message-2-fill"
+        icon: "groups"
     },
     {
         name: "跨文化合作",
-        icon: "time-fill"
+        icon: "public"
     },
     {
         name: "資源整合",
-        icon: "time-fill"
+        icon: "compare_arrows"
     },
     {
         name: "時間管理",
-        icon: "time-fill"
+        icon: "watch_later"
     }
 ];
 
