@@ -5,8 +5,8 @@ export const SITE = {
     tags: ["portfolio", "Resume cv", "Astro"],
     ogImage: "/og-image.webp",
     logo: "logo",
-    logoText: "SPortfolio",
-    lang: "en",
+    logoText: "Minshiou",
+    lang: "cht",
     favicon: "/favicon.png",
     repository: "https://github.com/vito8916/simple-portfolio.git",
     author: "Victor Alvarado",
@@ -14,26 +14,26 @@ export const SITE = {
 }
 
 export const ME = {
-    name: "John Doe",
-    profession: "Software Engineer | Full Stack Developer",
+    name: "何旼修",
+    profession: "Front-end Designer",
     profileImage: "pp.png",
     profileFacts: [
         {
-            value: 10,
-            description: "Years of Experience"
-        },
-        {
             value: 5,
-            description: "Completed Projects"
+            description: "Years of Front-End Experience"
         },
         {
-            value: 4,
-            description: "Satisfied Clients"
+            value: 10,
+            description: "Years of Design Experience"
+        },
+        {
+            value: 1,
+            description: "Global Project"
         }
     ],
     contactInfo: {
-        email: "vicbox.dev@vicbox.dev",
-        linkedin: "https://www.linkedin.com/in/victor-alvaradohn",
+        email: "shiou.ho@gmail.com",
+        linkedin: "https://www.linkedin.com/in/minshiou/",
         resumeDoc: "resume.pdf",
     },
     aboutMe: "I am a software engineer with a passion for web development. I have experience in building web " + "applications using modern technologies. I am a self-taught developer who enjoys learning new things and " + "sharing knowledge with others.",
@@ -44,7 +44,7 @@ export const SOCIALS = [
         name: "Twitter",
         url: "https://twitter.com/vicbox.dev",
         icon: "twitter-x-fill",
-        show: true
+        show: false
     },
     {
         name: "Facebook",
@@ -54,7 +54,7 @@ export const SOCIALS = [
     },
     {
         name: "Instagram",
-        url: "https://www.instagram.com/vicbox.dev",
+        url: "https://www.instagram.com/minshiou__",
         icon: "instagram-fill",
         show: true
     },
@@ -62,7 +62,7 @@ export const SOCIALS = [
         name: "Youtube",
         url: "https://www.youtube.com/vicbox.dev",
         icon: "youtube-fill",
-        show: true
+        show: false
     },
     {
         name: "TikTok",
@@ -72,7 +72,7 @@ export const SOCIALS = [
     },
     {
         name: "GitHub",
-        url: "https://github.com/vicbox.dev",
+        url: "https://github.com/aloysse",
         icon: "github-fill",
         show: true
     }
