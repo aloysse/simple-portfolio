@@ -1,21 +1,21 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 import ProfileInfo from "../components/ProfileInfo.astro";
 import ProfileActionButton from "../components/ProfileActionButton.astro";
 import TabsButtons from "../components/TabsButtons.tsx";
-import ProjectsCC from '@/components/ProjectsCC.astro';
+import ProjectsCC from "@/components/ProjectsCC.astro";
 import AboutMeCC from "../components/AboutMeCC.astro";
 import ProfileFacts from "../components/ProfileFacts.astro";
 ---
 
-<Layout title="John Doe | Portfolio | Home" scrollSmooth={false}>
-	<main class="container py-24 flex gap-8 flex-col">
-		<ProfileInfo />
-		<ProfileFacts />
-		<ProfileActionButton />
-		<TabsButtons client:idle >
-			<ProjectsCC slot="portfolio" />
-			<AboutMeCC slot="about" />
-		</TabsButtons>
-	</main>
+<Layout title="Minshiou | Portfolio | Home" scrollSmooth={false}>
+  <main class="container py-24 flex gap-8 flex-col">
+    <ProfileInfo />
+    <ProfileFacts />
+    <ProfileActionButton />
+    <TabsButtons client:idle>
+      <AboutMeCC slot="about" />
+      <ProjectsCC slot="portfolio" />
+    </TabsButtons>
+  </main>
 </Layout>

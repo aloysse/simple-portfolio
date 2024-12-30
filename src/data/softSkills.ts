@@ -5,19 +5,27 @@ interface SoftSkill {
 
 const softSkills: SoftSkill[] = [
     {
-        name: "Solving Problems",
+        name: "設計與發想",
         icon: "tools-fill"
     },
     {
-        name: "Teamwork",
+        name: "溝通與簡報",
         icon: "group-fill"
     },
     {
-        name: "Communication",
+        name: "團隊協作",
         icon: "message-2-fill"
     },
     {
-        name: "Time Management",
+        name: "跨文化合作",
+        icon: "time-fill"
+    },
+    {
+        name: "資源整合",
+        icon: "time-fill"
+    },
+    {
+        name: "時間管理",
         icon: "time-fill"
     }
 ];
