@@ -1,9 +1,9 @@
 export const SITE = {
     website: "https://shiousportfolio.netlify.app/", // replace this with your deployed domain
     title: "Minshiou's Portfolio",
-    description: "A simple but beautiful portfolio created with Astro",
-    tags: ["portfolio", "Resume cv", "Astro"],
-    ogImage: "/og-image.webp",
+    description: "A simple portfolio",
+    tags: ["portfolio", "Resume cv", "Minshiou", "Front-End Designer",],
+    ogImage: "/og-image.png",
     logo: "logo",
     logoText: "",
     lang: "cht",
@@ -34,7 +34,7 @@ export const ME = {
     contactInfo: {
         email: "shiou.ho@gmail.com",
         linkedin: "https://www.linkedin.com/in/minshiou/",
-        resumeDoc: "resume.pdf",
+        resumeDoc: "2024-何旼修-resume.pdf",
     },
     aboutMe: "設計背景出身，擁有五年前端開發與十餘年的 UI 設計及專案管理經驗。曾參與國際大型專案，從設計到前端實作，協助提升品牌使用體驗及轉換率，並具備獨立完成前端功能開發與設計整合的能力。",
 }
