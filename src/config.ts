@@ -5,7 +5,7 @@ export const SITE = {
     tags: ["portfolio", "Resume cv", "Astro"],
     ogImage: "/og-image.webp",
     logo: "logo",
-    logoText: "Minshiou",
+    logoText: "",
     lang: "cht",
     favicon: "/favicon.png",
     repository: "https://github.com/vito8916/simple-portfolio.git",
