@@ -1,5 +1,5 @@
 export const SITE = {
-    website: "https://simple-portfolio.vicbox.dev", // replace this with your deployed domain
+    website: "https://shiousportfolio.netlify.app/", // replace this with your deployed domain
     title: "Minshiou's Portfolio",
     description: "A simple but beautiful portfolio created with Astro",
     tags: ["portfolio", "Resume cv", "Astro"],
@@ -9,8 +9,8 @@ export const SITE = {
     lang: "cht",
     favicon: "/favicon.png",
     repository: "https://github.com/vito8916/simple-portfolio.git",
-    // author: "Victor Alvarado",
-    // profile: "https://victoralvarado.dev/",
+    author: "Victor Alvarado",
+    profile: "https://victoralvarado.dev/",
 }
 
 export const ME = {
