@@ -36,7 +36,7 @@ export const ME = {
         linkedin: "https://www.linkedin.com/in/minshiou/",
         resumeDoc: "resume.pdf",
     },
-    aboutMe: "I am a software engineer with a passion for web development. I have experience in building web " + "applications using modern technologies. I am a self-taught developer who enjoys learning new things and " + "sharing knowledge with others.",
+    aboutMe: "設計背景出身，擁有五年前端開發與十餘年的 UI 設計及專案管理經驗。曾參與國際大型專案，從設計到前端實作，協助提升品牌使用體驗及轉換率，並具備獨立完成前端功能開發與設計整合的能力。",
 }
 
 export const SOCIALS = [
