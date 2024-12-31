@@ -6,7 +6,7 @@ export const SITE = {
     ogImage: "/og-image.png",
     logo: "logo",
     logoText: "",
-    lang: "cht",
+    lang: "zh-Hant",
     favicon: "/favicon.png",
     repository: "https://github.com/vito8916/simple-portfolio.git",
     author: "Victor Alvarado",
