@@ -1,0 +1,59 @@
+---
+title: 住通GO
+summary: 以 React Native 開發的雙平台行動應用程式，以 WebView 為主要內容架構，作為住通房管的業務員專用延伸工具。負責 App 開發、iOS 與 Android 雙平台上架流程，以及版本管理作業。
+tags:
+  - React Native
+  - TypeScript
+  - WebView
+startDate: 2025-02-17
+url: "https://apps.apple.com/us/app/%E4%BD%8F%E9%80%9A-go/id6746115004"
+author: 何旼修
+cover: "./images/jutong-go/cover.svg"
+ogImage: ""
+---
+
+## 專案概述
+
+住通GO 是住通科技針對業務員（仲介人員）設計的行動應用程式，為住通房管 Web 系統的外勤延伸工具。App 採用 React Native 開發，以 WebView 作為主要的內容呈現架構，讓業務員能在手機上隨時瀏覽物件資訊、查閱客戶資料、追蹤委託進度，並與後台系統保持即時同步。
+
+目前已上架至 App Store 與 Google Play，支援 iOS 與 Android 雙平台。
+
+---
+
+## 👨‍💻 我的角色
+
+**React Native Developer / 上架管理**
+
+- 參與 App 前端開發，建立 React Native 應用程式架構
+- 整合 WebView 作為主要內容呈現層，處理 Native 與 Web 端的通訊橋接
+- 負責 iOS 與 Android 雙平台的建置流程、環境設定與憑證管理
+- 執行 App Store 與 Google Play 的上架申請與審核流程
+- 建立版本管理規範，協調測試、預發布與正式版本的發布節奏
+
+---
+
+## ❓ 挑戰
+
+1. **WebView 與 Native 的整合**：以 WebView 為主架構時，需要妥善處理 Native 端（相機、通知、定位）與 Web 端之間的功能呼叫，確保兩側通訊穩定可靠。
+2. **雙平台差異處理**：iOS 與 Android 在 WebView 渲染行為、字型顯示、手勢處理上存在差異，需要分平台排查並修正一致性問題。
+3. **App Store / Google Play 上架流程**：兩大平台的審核規則、憑證管理、版本號規範各有不同，首次上架需要從零建立一套可重複執行的標準流程。
+4. **版本同步管理**：App 與 Web 後台共用內容，需協調好雙端版本節奏，避免因 App 更新延遲而造成功能落差。
+
+---
+
+## 🎯 目標
+
+1. 提供業務員一個輕量、快速的行動端工具，讓外勤作業不再依賴桌機。
+2. 建立穩定可靠的雙平台建置與上架流程，支援未來持續更新。
+3. 確保 App 內容與住通房管 Web 系統保持同步，提供一致的使用者體驗。
+
+---
+
+## ✨ 解決方案
+
+- **React Native + WebView 架構**：以 React Native 建立 App 殼層，透過 WebView 載入住通房管的 Web 頁面，搭配 JavaScript Bridge 處理 Native 功能呼叫（如推播通知），兼顧開發效率與原生體驗。
+- **雙平台相容調整**：針對 iOS 與 Android 的差異逐一排查，在 React Native 端進行平台條件判斷，統一核心互動行為。
+- **標準化上架 SOP**：建立完整的上架流程文件，涵蓋憑證申請、環境設定（Dev / Staging / Production）、版本號規範與審核注意事項，讓後續版本更新可快速執行。
+- **版本管理規範**：制定明確的版本標籤與發布節奏，配合後端 API 版本協調更新，降低版本不同步的風險。
+
+---

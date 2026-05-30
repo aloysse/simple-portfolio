@@ -34,7 +34,7 @@ export const ME = {
     contactInfo: {
         email: "shiou.ho@gmail.com",
         linkedin: "https://www.linkedin.com/in/minshiou/",
-        resumeDoc: "2024-何旼修-resume.pdf",
+        resumeDoc: "2026-何旼修-Resume.pdf",
     },
     aboutMe: `設計背景出身，八年前端開發與十餘年的 UI 設計及專案管理經驗。曾參與國際大型專案，從設計到前端實作，協助提升品牌使用體驗及轉換率，並具備獨立完成前端功能開發與設計整合的能力。
     
