@@ -2,30 +2,25 @@
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title={`404 Not Found |`} description="We're sorry, but the page you're looking for cannot be found. Please check the URL or return to the homepage." scrollSmooth={false}>
-    <main class="container main flex justify-center items-center" role="main">
-        <div class="not-found-wrapper">
-            <span aria-hidden="true" role="img" aria-label="Shrug Emoji">¯\_(ツ)_/¯</span>
-            <h1>404</h1>
-            <p>Page Not Found</p>
-            <a href="/" class="my-6 text-lg underline decoration-dashed underline-offset-8" aria-label="back to home">
-                Go back home
-            </a>
-        </div>
-    </main>
+<Layout title="404 — Not Found" description="The page you are looking for cannot be found." scrollSmooth={false}>
+  <main class="container flex-grow flex justify-center items-center font-mono" role="main">
+    <div class="flex flex-col items-center gap-4 text-center py-20">
+      <div class="text-cli-text-muted text-xs flex items-center gap-2 mb-2">
+        <span class="text-cli-red">✗</span>
+        <span>bash: page: command not found</span>
+      </div>
+      <h1 class="text-7xl font-bold text-cli-green cli-glow">404</h1>
+      <p class="text-cli-text-dim text-sm">
+        <span class="text-cli-amber">Error:</span> Page not found
+      </p>
+      <a
+        href="/"
+        class="mt-4 inline-flex items-center gap-2 border border-cli-border text-cli-text-muted px-4 py-2 text-xs rounded-sm
+               hover:border-cli-green hover:text-cli-green transition-all duration-200"
+      >
+        <span class="text-cli-green">$</span>
+        cd ~
+      </a>
+    </div>
+  </main>
 </Layout>
-
-<style>
-    .not-found-wrapper h1 {
-        @apply text-9xl font-bold text-primary-light;
-    }
-    .not-found-wrapper {
-        @apply mb-14 flex flex-col items-center justify-center;
-    }
-    .not-found-wrapper p {
-        @apply mt-4 text-2xl sm:text-3xl;
-    }
-   /*
-
-    */
-</style>

@@ -1,73 +1,94 @@
 ---
-// data imports
-import workExperience from "@/data/Jobs.ts"
-import education from "@/data/education.ts"
-import languages from "../data/languages.ts"
-import hardSkills from "@/data/hardSkills"
-import softSkills from "@/data/softSkills"
+import workExperience from "@/data/Jobs.ts";
+import education from "@/data/education.ts";
+import languages from "../data/languages.ts";
+import hardSkills from "@/data/hardSkills";
+import softSkills from "@/data/softSkills";
 
-// component imports
 import JobDetails from "./JobDetails.astro";
 import EduDetail from "./EduDetail.astro";
 import SkillCard from "./SkillCard.astro";
 
-// config import
-import {ME} from '@/config';
-
+import { ME } from "@/config";
 ---
 
-<div class="relative flex flex-col gap-8 text-n700 dark:text-text-dark w-full mt-10 px-4">
-    {/*Description or About me -- Section*/}
-    <div class="mb-4">
-        <p>
-            {ME.aboutMe}
-        </p>
+<div class="relative flex flex-col gap-10 font-mono text-cli-text-dim w-full mt-6 px-1">
+
+  <!-- About section -->
+  <section class="cli-fade-in">
+    <div class="flex items-center gap-2 text-xs mb-3">
+      <span class="text-cli-green">$</span>
+      <span class="text-cli-text-muted">cat about.md</span>
     </div>
-    {/*Work experience section*/}
-    <div class="mb-4">
-        <h2 class="text-3xl font-bold mb-4">Work Experience</h2>
-        <div class="flex flex-col gap-6">
-            {workExperience.map((job) => (
-                    <JobDetails jobData={job}/>
-            ))}
-        </div>
+    <div class="border-l-2 border-cli-border pl-4 text-sm leading-relaxed text-cli-text-dim">
+      {ME.aboutMe}
     </div>
-    {/*Education section*/}
-    <div class="mb-4">
-        <h2 class="text-3xl font-bold mb-4">Education</h2>
-        <div class="flex flex-col gap-6">
-            {education.map((edu) => (
-                    <EduDetail eduData={edu}/>
-            ))}
-        </div>
+  </section>
+
+  <!-- Work Experience -->
+  <section class="cli-fade-in" style="animation-delay: 0.05s">
+    <div class="flex items-center gap-2 text-xs mb-4">
+      <span class="text-cli-green">$</span>
+      <span class="text-cli-text-muted">cat work_experience.md</span>
     </div>
-    {/*Skills section*/}
-    <div class="mb-4">
-        <h2 class="text-3xl font-bold mb-4">Hard Skills</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {hardSkills.map((skill) => (
-                    <SkillCard {...skill} showDescription={true}/>
-            ))}
-        </div>
+    <div class="flex flex-col gap-5 cli-stagger">
+      {workExperience.map((job) => <JobDetails jobData={job} />)}
     </div>
-    {/*Hobbies section*/}
-    <div class="mb-4">
-        <h2 class="text-2xl font-bold mb-4">Soft Skills</h2>
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {softSkills.map((skill) => (
-                    <SkillCard {...skill} showDescription={false}/>
-            ))}
-        </div>
+  </section>
+
+  <!-- Education -->
+  <section class="cli-fade-in" style="animation-delay: 0.1s">
+    <div class="flex items-center gap-2 text-xs mb-4">
+      <span class="text-cli-green">$</span>
+      <span class="text-cli-text-muted">cat education.md</span>
     </div>
-    {/*Languages section*/}
-    <div class="mb-4">
-        <h2 class="text-2xl font-bold mb-4">Languages</h2>
-        <div class="flex flex-col gap-2">
-            {
-                languages.map((lang) => (
-                    lang.show ? <p>{lang.name} - {lang.level}</p> : null
-                ))
-            }
-        </div>
+    <div class="flex flex-col gap-4 cli-stagger">
+      {education.map((edu) => <EduDetail eduData={edu} />)}
     </div>
+  </section>
+
+  <!-- Hard Skills -->
+  <section class="cli-fade-in" style="animation-delay: 0.15s">
+    <div class="flex items-center gap-2 text-xs mb-4">
+      <span class="text-cli-green">$</span>
+      <span class="text-cli-text-muted">ls skills/hard/</span>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 cli-stagger">
+      {hardSkills.map((skill) => <SkillCard {...skill} showDescription={true} />)}
+    </div>
+  </section>
+
+  <!-- Soft Skills -->
+  <section class="cli-fade-in" style="animation-delay: 0.2s">
+    <div class="flex items-center gap-2 text-xs mb-4">
+      <span class="text-cli-green">$</span>
+      <span class="text-cli-text-muted">ls skills/soft/</span>
+    </div>
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 cli-stagger">
+      {softSkills.map((skill) => <SkillCard {...skill} showDescription={false} />)}
+    </div>
+  </section>
+
+  <!-- Languages -->
+  <section class="cli-fade-in" style="animation-delay: 0.25s">
+    <div class="flex items-center gap-2 text-xs mb-3">
+      <span class="text-cli-green">$</span>
+      <span class="text-cli-text-muted">cat languages.md</span>
+    </div>
+    <div class="border border-cli-border bg-cli-surface rounded-sm px-4 py-3 flex flex-col gap-1.5">
+      {
+        languages.map((lang) =>
+          lang.show ? (
+            <div class="flex items-center gap-3 text-sm">
+              <span class="text-cli-green">›</span>
+              <span class="text-cli-text">{lang.name}</span>
+              <span class="text-cli-text-muted">—</span>
+              <span class="text-cli-text-dim">{lang.level}</span>
+            </div>
+          ) : null
+        )
+      }
+    </div>
+  </section>
+
 </div>

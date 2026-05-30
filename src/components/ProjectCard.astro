@@ -1,29 +1,51 @@
 ---
-// astro imports
-import {Image} from "astro:assets";
+import { Image } from "astro:assets";
 
-const { title, tags, cover, id } = Astro.props;
+const { title, tags, cover, id, summary } = Astro.props;
 ---
-<a href={`/projects/${id}`}>
-    <div class="relative flex flex-col text-gray-700 bg-clip-border rounded-xl w-full">
-        <div class="relative overflow-hidden rounded-xl h-52">
-            <Image
-                    transition:name={ `${id}-image` }
-                    src={cover}
-                    alt={"cover preview of " + title}
-                    class={"object-cover w-full h-full rounded-xl"}
-                    loading={'eager'}
-            />
-        </div>
-        <div class="px-2 py-4 flex flex-col gap-2">
-            <p class="text-sm  text-n500 dark:text-light-theme ">
-                {tags.join(', ')}
-            </p>
-            <div class="flex items-center justify-between mb-2">
-                <h4 class="font-semibold text-xl text-n500 dark:text-white ">
-                    {title}
-                </h4>
-            </div>
-        </div>
+
+<a href={`/projects/${id}`} class="group block">
+  <div class="border border-cli-border bg-cli-surface rounded-sm
+              hover:border-cli-green/40 hover:bg-cli-surface-2
+              transition-all duration-200 overflow-hidden">
+
+    <!-- Cover image -->
+    <div class="relative h-48 overflow-hidden border-b border-cli-border bg-cli-bg">
+      <!-- Terminal scanline overlay on image -->
+      <div class="absolute inset-0 z-10 pointer-events-none bg-gradient-to-b from-transparent to-cli-bg/60"></div>
+      <Image
+        transition:name={`${id}-image`}
+        src={cover}
+        alt={"Cover preview of " + title}
+        class="object-cover w-full h-full opacity-80 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-300"
+        loading="eager"
+      />
     </div>
+
+    <!-- Content -->
+    <div class="px-4 py-3 flex flex-col gap-1.5">
+      <!-- File path style title -->
+      <div class="flex items-center gap-2">
+        <span class="text-cli-green text-xs group-hover:text-cli-green-bright transition-colors">▶</span>
+        <h4 class="text-cli-text font-bold text-sm group-hover:text-cli-green transition-colors duration-200">
+          {title}
+        </h4>
+      </div>
+      <!-- Tags -->
+      <div class="flex flex-wrap gap-1">
+        {tags.map((tag: string) => (
+          <span class="text-cli-text-muted text-xs border border-cli-border-muted px-1.5 py-0.5 rounded-sm font-mono">
+            {tag}
+          </span>
+        ))}
+      </div>
+      <!-- Summary -->
+      {summary && (
+        <p class="text-cli-text-dim text-xs leading-relaxed line-clamp-2 mt-0.5">
+          {summary}
+        </p>
+      )}
+    </div>
+
+  </div>
 </a>

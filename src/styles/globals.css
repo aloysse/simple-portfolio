@@ -1,9 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @layer base {
     :root {
-        --radius: 0.5rem
+        --radius: 0.375rem;
+    }
+
+    /* Terminal-style scrollbar */
+    ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+        background: #0D1117;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #30363D;
+        border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: #3FB950;
     }
 }
 
@@ -11,66 +28,160 @@ main {
     @apply flex-grow;
 }
 
-/* Base prose styling */
-/* Customize .prose directly */
-.prose {
-    color: theme('colors.n700');
-    --tw-prose-headings: theme('colors.n700');
-    --tw-prose-p: theme('colors.n700');
-    --tw-prose-a: theme('colors.primary-light');
-    --tw-prose-a-hover: theme('colors.primary-hover-light');
-    --tw-prose-blockquote: theme('colors.n500');
-    --tw-prose-figcaption: theme('colors.n500');
-    --tw-prose-strong: theme('colors.n700');
-    --tw-prose-code: theme('colors.n700');
-    --tw-prose-ol: theme('colors.n700');
-    --tw-prose-ul: theme('colors.n700');
-    --tw-prose-li-marker: theme('colors.n500');
-    --tw-prose-img: theme('colors.n700');
-    --tw-prose-hr: theme('colors.n500');
+/* ─── CLI Animations ─────────────────────────────── */
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
 }
 
-/* Dark mode customization */
-@media (prefers-color-scheme: dark) {
-    .prose {
-        color: theme('colors.text-dark');
-        --tw-prose-headings: theme('colors.light-theme');
-        --tw-prose-p: theme('colors.light-theme');
-        --tw-prose-a: theme('colors.primary-dark');
-        --tw-prose-a-hover: theme('colors.primary-hover-dark');
-        --tw-prose-blockquote: theme('colors.n500');
-        --tw-prose-figcaption: theme('colors.light-theme');
-        --tw-prose-strong: theme('colors.light-theme');
-        --tw-prose-code: theme('colors.light-theme');
-        --tw-prose-ol: theme('colors.light-theme');
-        --tw-prose-ul: theme('colors.light-theme');
-        --tw-prose-li-marker: theme('colors.n500');
-        --tw-prose-img: theme('colors.light-theme');
-        --tw-prose-hr: theme('colors.n500');
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
+@keyframes typewriter {
+    from { clip-path: inset(0 100% 0 0); }
+    to   { clip-path: inset(0 0% 0 0); }
+}
+
+@keyframes glowPulse {
+    0%, 100% { text-shadow: 0 0 6px rgba(63, 185, 80, 0.3); }
+    50%       { text-shadow: 0 0 18px rgba(63, 185, 80, 0.7); }
+}
+
+@keyframes scanline {
+    0%   { transform: translateY(0); }
+    100% { transform: translateY(100vh); }
+}
+
+@keyframes slide-right {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(4px); }
+}
+
+.cli-blink {
+    animation: blink 1.2s step-end infinite;
+}
+
+.cli-fade-in {
+    animation: fadeInUp 0.45s ease-out both;
+}
+
+.cli-glow {
+    animation: glowPulse 3s ease-in-out infinite;
+}
+
+.cli-typewriter {
+    animation: typewriter 0.6s steps(20) both;
+}
+
+/* Staggered fade-in for list items */
+.cli-stagger > * {
+    animation: fadeInUp 0.4s ease-out both;
+}
+.cli-stagger > *:nth-child(1) { animation-delay: 0.05s; }
+.cli-stagger > *:nth-child(2) { animation-delay: 0.10s; }
+.cli-stagger > *:nth-child(3) { animation-delay: 0.15s; }
+.cli-stagger > *:nth-child(4) { animation-delay: 0.20s; }
+.cli-stagger > *:nth-child(5) { animation-delay: 0.25s; }
+.cli-stagger > *:nth-child(6) { animation-delay: 0.30s; }
+
+/* ─── Prose (MDX content) ─────────────────────────── */
+
+.prose {
+    color: theme('colors.cli-text-dim');
+    --tw-prose-headings:     theme('colors.cli-text');
+    --tw-prose-p:            theme('colors.cli-text-dim');
+    --tw-prose-a:            theme('colors.cli-green');
+    --tw-prose-a-hover:      theme('colors.cli-green-bright');
+    --tw-prose-blockquote:   theme('colors.cli-text-muted');
+    --tw-prose-figcaption:   theme('colors.cli-text-muted');
+    --tw-prose-strong:       theme('colors.cli-text');
+    --tw-prose-code:         theme('colors.cli-green');
+    --tw-prose-ol:           theme('colors.cli-text-dim');
+    --tw-prose-ul:           theme('colors.cli-text-dim');
+    --tw-prose-li-marker:    theme('colors.cli-green');
+    --tw-prose-hr:           theme('colors.cli-border');
+    font-family: theme('fontFamily.mono');
+}
+
+.prose h2 {
+    color: theme('colors.cli-text');
+    border-bottom: 1px solid theme('colors.cli-border');
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.prose h2::before {
+    content: '## ';
+    color: theme('colors.cli-text-muted');
+}
+
+.prose a {
+    color: theme('colors.cli-green');
+    text-decoration: none;
+}
+.prose a:hover {
+    color: theme('colors.cli-green-bright');
+    text-decoration: underline;
+}
+
 .prose img {
-    @apply rounded-2xl;
+    @apply rounded border border-cli-border;
 }
 
-/* Icon Animations */
-.cv-btn:hover .animate-slide-right {
-    animation: slide-right 0.5s cubic-bezier(1, -.43, .68, .57) infinite alternate both !important;
+.prose strong {
+    color: theme('colors.cli-text');
 }
 
-.li-btn:hover .linkedin-anim {
-    animation: linkedin 2s infinite both cubic-bezier(1, -.08, 0, 1.12);
+.prose code {
+    color: theme('colors.cli-green');
+    background: theme('colors.cli-surface');
+    padding: 0.1em 0.3em;
+    border-radius: 3px;
+    font-size: 0.875em;
 }
 
-/* Code Block Styles */
+.prose blockquote {
+    border-left-color: theme('colors.cli-green');
+    background: theme('colors.cli-surface');
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0 4px 4px 0;
+}
+
+.prose hr {
+    border-color: theme('colors.cli-border');
+}
+
+/* ─── Code Block Styles ───────────────────────────── */
+
 pre {
     position: relative;
     z-index: 1;
     margin: 0;
     padding: 1.25rem 0;
-    background: transparent;
+    background: theme('colors.cli-surface') !important;
+    border: 1px solid theme('colors.cli-border');
+    border-radius: 6px;
     overflow-x: auto;
+}
+
+pre::before {
+    content: '';
+    display: block;
+    height: 28px;
+    background: theme('colors.cli-surface-2');
+    border-bottom: 1px solid theme('colors.cli-border');
+    margin-bottom: 0.75rem;
+    margin-top: -1.25rem;
 }
 
 code {
@@ -81,4 +192,11 @@ code {
     line-height: 1.7;
     font-size: 0.875rem;
     transition: color 0.5s;
+    font-family: theme('fontFamily.mono');
+}
+
+/* ─── Icon Animations (legacy) ───────────────────── */
+
+.cv-btn:hover .animate-slide-right {
+    animation: slide-right 0.5s cubic-bezier(1, -.43, .68, .57) infinite alternate both !important;
 }

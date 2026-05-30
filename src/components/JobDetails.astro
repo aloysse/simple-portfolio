@@ -1,8 +1,4 @@
 ---
-// component imports
-import { Badge } from "./ui/badge";
-
-// library imports
 import { formatDatetime } from "../lib/utils";
 
 interface Job {
@@ -16,35 +12,41 @@ interface Job {
   currentJob: boolean;
 }
 
-const { jobData } = Astro.props; // Ensure correct typing for the props
-const {
-  title,
-  company,
-  location,
-  startDate,
-  endDate,
-  description,
-  goals,
-  currentJob,
-} = jobData as Job;
+const { jobData } = Astro.props;
+const { title, company, location, startDate, endDate, description, goals, currentJob } = jobData as Job;
+
+const dateRange = `${formatDatetime(startDate)} → ${currentJob ? "Present" : formatDatetime(endDate)}`;
 ---
 
-<div class="flex flex-col gap-2">
-  <h3 class="text-xl font-bold">{title}</h3>
+<div class="border-l-2 border-cli-border pl-4 flex flex-col gap-2 hover:border-cli-green transition-colors duration-200">
+  <!-- Title -->
   <div class="flex items-center gap-2">
-    <Badge
-      className="bg-primary-light dark:bg-primary-dark w-fit rounded-md whitespace-nowrap	"
-    >
-      {formatDatetime(startDate)} - {
-        currentJob ? "Present" : formatDatetime(endDate)
-      }
-    </Badge>
-    <p class="truncate">{company}</p>
-    <span class="text-sm font-bold">/</span>
-    <p class="truncate">{location}</p>
+    <span class="text-cli-green text-xs">▶</span>
+    <h3 class="text-cli-text font-bold text-sm">{title}</h3>
+    {currentJob && <span class="text-xs text-cli-green border border-cli-green/30 px-1.5 py-0.5 rounded-sm">now</span>}
   </div>
-  <p class="text-muted-foreground">{description}</p>
-  <ul style="list-style: disc;">
-    {goals.map((goal: string) => <li>{goal}</li>)}
-  </ul>
+
+  <!-- Meta -->
+  <div class="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-xs text-cli-text-muted">
+    <span class="text-cli-amber">{dateRange}</span>
+    {company && <><span>·</span><span>{company}</span></>}
+    {location && <><span>·</span><span>{location}</span></>}
+  </div>
+
+  <!-- Description -->
+  {description && (
+    <p class="text-xs text-cli-text-dim leading-relaxed">{description}</p>
+  )}
+
+  <!-- Goals -->
+  {goals.length > 0 && (
+    <ul class="flex flex-col gap-1 mt-1">
+      {goals.map((goal: string) => (
+        <li class="flex items-start gap-2 text-xs text-cli-text-dim">
+          <span class="text-cli-green mt-0.5 flex-shrink-0">›</span>
+          <span>{goal}</span>
+        </li>
+      ))}
+    </ul>
+  )}
 </div>

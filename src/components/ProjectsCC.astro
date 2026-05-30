@@ -1,37 +1,30 @@
 ---
-// astro imports
 import { getCollection } from "astro:content";
-
-// components imports
 import ProjectCard from "./ProjectCard.astro";
-import { Button } from "./ui/button";
 
 const allProjects = await getCollection("projects");
+const sorted = allProjects.sort((a, b) => a.id.localeCompare(b.id));
 ---
 
-<!--Grid section to show the projects in to columns -->
-<>
-  <section class="mt-10 px-4 w-full">
-    <div class="mb-4">
-      <h2 class="text-3xl font-bold mb-4">Projects</h2>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      {
-        allProjects.map((project) => (
-          <ProjectCard
-            id={project.id}
-            title={project.data.title}
-            summary={project.data.summary}
-            tags={project.data.tags}
-            cover={project.data.cover}
-          />
-        ))
-      }
-    </div>
-  </section>
-  <div class="flex justify-center mt-10">
-    <!-- <Button className="[&_svg]:size-8 text-n700 bg-primary-light dark:bg-primary-dark hover:bg-primary-hover-light dark:hover:bg-primary-hover-dark">
-            <a href="/projects">See All Projects</a>
-        </Button> -->
+<section class="mt-6 w-full font-mono">
+  <!-- Prompt -->
+  <div class="flex items-center gap-2 text-xs mb-5">
+    <span class="text-cli-green">$</span>
+    <span class="text-cli-text-muted">ls -la projects/</span>
   </div>
-</>
+
+  <!-- Project grid -->
+  <div class="grid grid-cols-1 gap-4 cli-stagger">
+    {
+      sorted.map((project) => (
+        <ProjectCard
+          id={project.id}
+          title={project.data.title}
+          summary={project.data.summary}
+          tags={project.data.tags}
+          cover={project.data.cover}
+        />
+      ))
+    }
+  </div>
+</section>

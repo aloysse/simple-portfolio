@@ -1,59 +1,63 @@
 ---
-// components imports
-import { Button } from "./ui/button";
-import LinkedIn from "./icons/LinkedIn.astro";
-import DownloadArrow from "./icons/DownloadArrow.astro";
-
-// config import
 import { ME } from "@/config.ts";
 
 const resume = "/" + ME.contactInfo.resumeDoc;
 const { linkedin, email } = ME.contactInfo;
 ---
 
-<div class="profile-action-buttons w-full flex gap-2">
-  <Button
+<div class="w-full flex gap-2 cli-fade-in" style="animation-delay: 0.15s">
+  <!-- Download CV -->
+  <button
     data-cv={resume}
     id="cvBtn"
-    size={"lg"}
-    className="[&_svg]:size-8 px-4 md:px-8 h-14 cv-btn flex-1 text-n700 bg-primary-light dark:bg-primary-dark hover:bg-primary-hover-light dark:hover:bg-primary-hover-dark"
+    class="cv-btn flex-1 flex items-center justify-center gap-2 h-11 px-4
+           border border-cli-green text-cli-green bg-cli-green/5
+           hover:bg-cli-green hover:text-cli-bg
+           transition-all duration-200 font-mono text-sm rounded-sm
+           focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cli-green"
   >
-    Download CV
-    <DownloadArrow width={24} height={24} />
-  </Button>
+    <span class="text-xs opacity-60">$</span>
+    <span>./download_cv.sh</span>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 ml-1 animate-slide-right">
+      <path d="M13 10H18L12 16L6 10H11V3H13V10ZM4 19H20V12H22V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V12H4V19Z"/>
+    </svg>
+  </button>
 
-  <Button
-    size="icon"
-    className="[&_svg]:size-8 h-14 w-14 li-btn flex-none text-n700 dark:text-text-dark bg-white dark:bg-black hover:bg-grey-500 dark:hover:bg-n700"
+  <!-- LinkedIn -->
+  <a
+    href={linkedin}
+    target="_blank"
+    aria-label="LinkedIn profile"
+    class="li-btn flex items-center justify-center h-11 w-11 flex-none
+           border border-cli-border text-cli-text-dim
+           hover:border-cli-blue hover:text-cli-blue
+           transition-all duration-200 rounded-sm"
   >
-    <a href={linkedin} target="_blank" aria-label="my linkedIn profile link">
-      <LinkedIn width={24} height={24} />
-    </a>
-  </Button>
-  <Button
-    size="icon"
-    className="[&_svg]:size-6 h-14 w-14 li-btn flex-none dark:text-text-dark bg-white dark:bg-black hover:bg-grey-500 dark:hover:bg-n700"
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+      <path d="M6.94 5A2 2 0 1 1 4.93 3 2 2 0 0 1 6.94 5ZM5 7.75H3V17H5ZM8.83 7.75H7V17h1.83v-4.66c0-1.83.35-3.62 2.62-3.62s2.26 1.82 2.26 3.73V17H15.5v-4.7c0-2.91-.58-5.28-4.12-5.28a3.67 3.67 0 0 0-3.25 1.8h-.05V7.75H8.83z"/>
+    </svg>
+  </a>
+
+  <!-- Email -->
+  <a
+    href={`mailto:${email}`}
+    aria-label="Send email"
+    class="flex items-center justify-center h-11 w-11 flex-none
+           border border-cli-border text-cli-text-dim
+           hover:border-cli-amber hover:text-cli-amber
+           transition-all duration-200 rounded-sm"
   >
-    <a href={`mailto:${email}`} aria-label="send me an email">
-      <svg
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        class="fill-n700 dark:fill-light-theme"
-        ><path
-          d="M3 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3ZM12.0606 11.6829L5.64722 6.2377L4.35278 7.7623L12.0731 14.3171L19.6544 7.75616L18.3456 6.24384L12.0606 11.6829Z"
-        ></path></svg
-      >
-    </a>
-  </Button>
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor">
+      <path d="M3 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3ZM12.0606 11.6829L5.64722 6.2377L4.35278 7.7623L12.0731 14.3171L19.6544 7.75616L18.3456 6.24384L12.0606 11.6829Z"/>
+    </svg>
+  </a>
 </div>
 
 <script>
   const cvBtn = document.getElementById("cvBtn") as HTMLButtonElement;
-  const resume = cvBtn.dataset.cv;
+  const resume = cvBtn?.dataset.cv;
 
-  cvBtn.addEventListener("click", () => {
-    window.open(resume, "_blank");
+  cvBtn?.addEventListener("click", () => {
+    if (resume) window.open(resume, "_blank");
   });
 </script>

@@ -1,41 +1,33 @@
 ---
-// component imports
-import {Badge} from "./ui/badge";
-
-// lib imports
-import {formatDatetime} from "../lib/utils";
+import { formatDatetime } from "../lib/utils";
 
 interface Edu {
-    title: string;
-    school: string;
-    location: string;
-    startDate: string;
-    endDate?: string;
-    description: string;
-    currentUni: boolean;
+  title: string;
+  school: string;
+  location: string;
+  startDate: string;
+  endDate?: string;
+  description: string;
+  currentUni: boolean;
 }
 
-const {eduData} = Astro.props;  // Ensure correct typing for the props
-const {
-    title,
-    school,
-    location,
-    startDate,
-    endDate,
-    description,
-    currentUni
-} = eduData as Edu;
+const { eduData } = Astro.props;
+const { title, school, location, startDate, endDate, description, currentUni } = eduData as Edu;
+
+const dateRange = `${formatDatetime(startDate)} → ${currentUni ? "Present" : formatDatetime(endDate)}`;
 ---
 
-<div class="flex flex-col gap-2">
-    <Badge className="bg-primary-light dark:bg-primary-dark w-fit rounded-md">
-        {formatDatetime(startDate)} - {currentUni ? "Present" : formatDatetime(endDate)}
-    </Badge>
-    <h3 class="text-xl font-bold">{title}</h3>
-    <div class="flex gap-2">
-        <p>{school}</p>
-        <span>/</span>
-        <p>{location}</p>
-    </div>
-    <p>{description}</p>
+<div class="border-l-2 border-cli-border pl-4 flex flex-col gap-1.5 hover:border-cli-green transition-colors duration-200">
+  <div class="flex items-center gap-2">
+    <span class="text-cli-green text-xs">▶</span>
+    <h3 class="text-cli-text font-bold text-sm">{title}</h3>
+  </div>
+  <div class="flex flex-wrap items-center gap-x-2 text-xs text-cli-text-muted">
+    <span class="text-cli-amber">{dateRange}</span>
+    {school && <><span>·</span><span>{school}</span></>}
+    {location && <><span>·</span><span>{location}</span></>}
+  </div>
+  {description && (
+    <p class="text-xs text-cli-text-dim leading-relaxed">{description}</p>
+  )}
 </div>

@@ -1,15 +1,27 @@
 ---
-// config import
-import { ME } from '@/config'
+import { ME } from "@/config";
 
-const { profileFacts } = ME
+const { profileFacts } = ME;
 ---
 
-<div class="flex justify-between gap-1 text-center">
-    {profileFacts.map((fact) => (
-        <div class="flex flex-col items-center justify-center gap-2">
-            <h3 class="text-md font-bold text-n900 dark:text-text-dark">{`${fact.value}+`}</h3>
-            <p class="text-sm text-n700 dark:text-text-dark">{fact.description}</p>
-        </div>
-    ))}
+<div class="w-full cli-fade-in" style="animation-delay: 0.1s">
+  <!-- Prompt -->
+  <div class="flex items-center gap-2 mb-3 text-xs font-mono">
+    <span class="text-cli-green">$</span>
+    <span class="text-cli-text-dim">neofetch --brief</span>
+  </div>
+
+  <!-- Stats -->
+  <div class="border border-cli-border rounded-sm bg-cli-surface px-4 py-3">
+    <div class="flex justify-between gap-4 text-center sm:text-left sm:justify-start sm:gap-8">
+      {
+        profileFacts.map((fact) => (
+          <div class="flex flex-col sm:flex-row sm:items-center sm:gap-2">
+            <span class="text-cli-text font-bold text-lg leading-none">{fact.value}<span class="text-cli-green text-sm">+</span></span>
+            <span class="text-cli-text-muted text-xs leading-tight mt-1 sm:mt-0">{fact.description.toLowerCase()}</span>
+          </div>
+        ))
+      }
+    </div>
+  </div>
 </div>

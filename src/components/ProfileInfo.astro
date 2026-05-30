@@ -1,25 +1,51 @@
 ---
-// components imports
 import ProfileImage from "./ProfileImage.astro";
 import Social from "./Social.astro";
-
-// config import
-import {ME} from '@/config';
+import { ME } from "@/config";
 
 const { name, profession } = ME;
 ---
 
-<div class={'w-full flex items-center justify-start mt-5'} >
-    <div class="flex items-center gap-6 w-full">
-        <div class={"border-[3px] border-primary-light p-1.5 rounded-full "} style={{ overflow: 'hidden' }}>
-            <ProfileImage  />
-        </div>
-        <div class={'profile-info flex flex-col gap-2 w-full'}>
-            <div class="info">
-                <h1 class={'text-xl md:text-2xl lg:text-4xl xl:text-4xl text-n900 dark:text-white'}>{ name }</h1>
-                <p class={'text-sm text-n500 dark:text-text-dark'}>{ profession }</p>
-            </div>
-            <Social />
-        </div>
+<div class="w-full mt-5 cli-fade-in">
+  <!-- Prompt line -->
+  <div class="flex items-center gap-2 mb-4 text-xs font-mono">
+    <span class="text-cli-green">$</span>
+    <span class="text-cli-text-dim">whoami</span>
+  </div>
+
+  <!-- Profile row -->
+  <div class="flex items-start gap-5">
+    <!-- Image with terminal border -->
+    <div class="flex-shrink-0">
+      <div class="border border-cli-green/30 p-0.5 bg-cli-surface rounded-sm relative">
+        <ProfileImage />
+        <!-- Corner accents -->
+        <span class="absolute top-0 left-0 w-2.5 h-2.5 border-t border-l border-cli-green -translate-x-px -translate-y-px"></span>
+        <span class="absolute top-0 right-0 w-2.5 h-2.5 border-t border-r border-cli-green translate-x-px -translate-y-px"></span>
+        <span class="absolute bottom-0 left-0 w-2.5 h-2.5 border-b border-l border-cli-green -translate-x-px translate-y-px"></span>
+        <span class="absolute bottom-0 right-0 w-2.5 h-2.5 border-b border-r border-cli-green translate-x-px translate-y-px"></span>
+      </div>
     </div>
+
+    <!-- Info block -->
+    <div class="flex flex-col gap-2 pt-1">
+      <!-- Name -->
+      <div class="flex items-baseline gap-2">
+        <span class="text-cli-text-muted text-xs">name</span>
+        <span class="text-cli-text-muted text-xs">:</span>
+        <h1 class="text-cli-text text-2xl font-bold tracking-tight cli-glow">{name}</h1>
+        <span class="text-cli-green cli-blink text-xl leading-none">█</span>
+      </div>
+      <!-- Role -->
+      <div class="flex items-center gap-2">
+        <span class="text-cli-text-muted text-xs">role</span>
+        <span class="text-cli-text-muted text-xs">:</span>
+        <p class="text-cli-text-dim text-sm">{profession}</p>
+      </div>
+      <!-- Social -->
+      <div class="mt-1">
+        <Social />
+      </div>
+    </div>
+  </div>
 </div>
