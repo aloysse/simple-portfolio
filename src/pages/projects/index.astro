@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import ProjectCardList from "@/components/ProjectCardList.astro";
+import type { ImageMetadata } from "astro";
 
 interface Project {
   id: string;
@@ -14,25 +15,33 @@ interface Project {
 }
 
 const allProjects = await getCollection("projects");
+const sorted = allProjects.sort((a, b) => a.id.localeCompare(b.id));
 ---
 
 <Layout
-  title="Minshiou | Portfolio | My Projects"
-  description="A list of my best projects"
+  title="Minshiou | Projects"
+  description="A collection of my design and frontend projects"
   scrollSmooth={false}
 >
-  <main class="container py-24 flex gap-8 flex-col" role="main">
-    <!--Projects Section-->
-    <section class="border-bottom">
-      <div class="mb-4">
-        <h2 class="text-3xl font-bold mb-8">All My Projects</h2>
-      </div>
-    </section>
+  <main class="container py-24 flex flex-col gap-8 font-mono" role="main">
 
-    <section class="flex flex-col gap-8">
+    <!-- Header -->
+    <div class="mt-6 flex flex-col gap-2">
+      <div class="flex items-center gap-2 text-xs text-cli-text-muted">
+        <span class="text-cli-green">$</span>
+        <span>ls -la ~/projects/</span>
+      </div>
+      <h1 class="text-cli-text text-xl font-bold">
+        <span class="text-cli-green">▶ </span>All Projects
+      </h1>
+      <p class="text-cli-text-dim text-xs">{sorted.length} project{sorted.length !== 1 ? "s" : ""} found</p>
+    </div>
+
+    <!-- List -->
+    <section class="flex flex-col gap-3 cli-stagger">
       {
-        allProjects.length > 0 ? (
-          allProjects.map((project: Project) => (
+        sorted.length > 0 ? (
+          sorted.map((project: Project) => (
             <ProjectCardList
               id={project.id}
               title={project.data.title}
@@ -41,9 +50,12 @@ const allProjects = await getCollection("projects");
             />
           ))
         ) : (
-          <p>No projects found.</p>
+          <p class="text-cli-text-dim text-sm">
+            <span class="text-cli-amber">Warning:</span> No projects found.
+          </p>
         )
       }
     </section>
+
   </main>
 </Layout>

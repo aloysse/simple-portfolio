@@ -1,40 +1,46 @@
 ---
-// astro imports
-import { Image } from 'astro:assets';
-
-// library imports
-import {cn} from "../lib/utils";
-
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
 
 interface Props {
-    title: string;
-    tags: string[];
-    cover: ImageMetadata;
-    id: string;
+  title: string;
+  tags: string[];
+  cover: ImageMetadata;
+  id: string;
 }
 
 const { title, tags, cover, id } = Astro.props as Props;
 ---
 
-<a href={`/projects/${id}`} class="project-card" aria-label={`View project "${title}"`}>
-    <div class="flex flex-col md:flex-row md:items-center gap-6">
-        <div class="rounded-xl h-[250px] md:w-[150px] md:h-[150px] flex-none overflow-hidden">
-            <Image
-                    transition:name={`${id}-image`}
-                    src={cover}
-                    alt={`Cover preview of the project titled "${title}"`}
-                    class="object-cover w-full h-full rounded-xl"
-            />
-        </div>
-        <div class="flex flex-col gap-2 flex-1">
-            <p class="text-sm text-n500 dark:text-light-theme">
-                {tags.join(', ')}
-            </p>
-            <div class="flex items-center justify-between mb-2">
-                <h6 class={cn("font-semibold text-xl", "text-n500 dark:text-white")}>
-                    {title}
-                </h6>
-            </div>
-        </div>
+<a href={`/projects/${id}`} class="group block" aria-label={`View project "${title}"`}>
+  <div class="border border-cli-border bg-cli-surface rounded-sm
+              hover:border-cli-green/40 hover:bg-cli-surface-2
+              transition-all duration-200 overflow-hidden
+              flex flex-col sm:flex-row sm:items-center gap-0">
+    <!-- Cover -->
+    <div class="sm:w-40 sm:h-32 h-44 flex-none overflow-hidden border-b sm:border-b-0 sm:border-r border-cli-border bg-cli-bg">
+      <Image
+        transition:name={`${id}-image`}
+        src={cover}
+        alt={`Cover preview of "${title}"`}
+        class="object-cover w-full h-full opacity-80 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-300"
+      />
     </div>
+    <!-- Info -->
+    <div class="flex flex-col gap-1.5 px-4 py-3 flex-1">
+      <div class="flex items-center gap-2">
+        <span class="text-cli-green text-xs group-hover:text-cli-green-bright transition-colors">▶</span>
+        <h4 class="text-cli-text font-bold text-sm group-hover:text-cli-green transition-colors duration-200">
+          {title}
+        </h4>
+      </div>
+      <div class="flex flex-wrap gap-1">
+        {tags.map((tag: string) => (
+          <span class="text-cli-text-muted text-xs border border-cli-border-muted px-1.5 py-0.5 rounded-sm font-mono">
+            {tag}
+          </span>
+        ))}
+      </div>
+    </div>
+  </div>
 </a>
