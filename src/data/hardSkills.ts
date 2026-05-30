@@ -11,11 +11,6 @@ const hardSkills: HardSkill[] = [
     icon: "figma"
   },
   {
-    name: "Adobe XD",
-    description: "能快速構建互動原型，轉化為清晰的開發規範",
-    icon: "adobe_xd"
-  },
-  {
     name: "React",
     description: "精通使用 React 進行元件化開發，打造高效可維護的前端應用",
     icon: "react"

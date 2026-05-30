@@ -44,10 +44,24 @@ interface WorkExperience {
  */
 const workExperience:WorkExperience[] = [
     {
+        title: "Front-end Developer",
+        startDate: "2025-02-17",
+        company: "住通科技股份有限公司",
+        location: "台北",
+        description: "負責公司 SaaS 管理系統與行動應用程式的前端開發，並參與前端架構設計與系統整合，協助控管前端部門開發流程",
+        goals: [
+            "規劃設計並參與開發 SaaS 專案 * 2，行動裝置 App * 2。",
+            "使用 React 及 React Native 開發。",
+            "負責 iOS 與 Android App 建置與發佈流程，包含測試、環境設定與上架相關作業。",
+            "參與 UI / UX 與系統介面規劃，設計可重用元件與建立開發規範。"
+        ],
+        currentJob: true,
+    },
+    {
         title: "UI / Front-end Designer",
         startDate: "2022-09-01",
         company: "自由工作者",
-        location: "台中",
+        location: "",
         description: "Developed and maintained web applications using React, NextJs, and Tailwind CSS.",
         goals: [
             "完成多項品牌網站的 UI 設計與前端功能開發，包含頁面設計、響應式佈局及效能優化。亦協助企業完成品牌識別設計，強化品牌在數位平台的整體呈現。"

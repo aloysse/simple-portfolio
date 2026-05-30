@@ -19,7 +19,7 @@ export const ME = {
     profileImage: "pp.png",
     profileFacts: [
         {
-            value: 5,
+            value: 8,
             description: "Years of Front-End Experience"
         },
         {
@@ -36,7 +36,9 @@ export const ME = {
         linkedin: "https://www.linkedin.com/in/minshiou/",
         resumeDoc: "2024-何旼修-resume.pdf",
     },
-    aboutMe: "設計背景出身，擁有五年前端開發與十餘年的 UI 設計及專案管理經驗。曾參與國際大型專案，從設計到前端實作，協助提升品牌使用體驗及轉換率，並具備獨立完成前端功能開發與設計整合的能力。",
+    aboutMe: `設計背景出身，八年前端開發與十餘年的 UI 設計及專案管理經驗。曾參與國際大型專案，從設計到前端實作，協助提升品牌使用體驗及轉換率，並具備獨立完成前端功能開發與設計整合的能力。
+    
+    主要使用 React 開發企業內部管理系統及 SaaS 平台，並擔任前端架構設計與系統整合職務。`,
 }
 
 export const SOCIALS = [
