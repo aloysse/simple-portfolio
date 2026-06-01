@@ -8,19 +8,19 @@ import { twMerge } from "tailwind-merge"
  * @return {string} - A single merged string of class names.
  */
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+  return twMerge(clsx(...inputs))
 }
 
 
 /**
  * Formats the given datetime value into a localized date string.
  *
- * @param {any} datetime - The datetime value to be formatted. This can be any value that can be parsed by the JavaScript Date object.
- * @returns {string} - A string representing the formatted date in 'en-US' locale, displaying the year and short month.
+ * @param datetime - The datetime value to be formatted. This can be any value that can be parsed by the JavaScript Date object.
+ * @returns A string representing the formatted date in 'en-US' locale, displaying the year and short month.
  */
-export const formatDatetime = (datetime: any) => {
+export const formatDatetime = (datetime: Date | string | number): string => {
   const d = new Date(datetime);
-  return d.toLocaleDateString('en-US', {
+  return d.toLocaleDateString('zh-TW', {
     year: 'numeric',
     month: 'short',
   });
