@@ -14,7 +14,8 @@ interface Edu {
 const { eduData } = Astro.props;
 const { title, school, location, startDate, endDate, description, currentUni } = eduData as Edu;
 
-const dateRange = `${formatDatetime(startDate)} → ${currentUni ? "Present" : formatDatetime(endDate)}`;
+const formattedEndDate = endDate ? formatDatetime(endDate) : "";
+const dateRange = `${formatDatetime(startDate)} → ${currentUni ? "Present" : formattedEndDate}`;
 ---
 
 <div class="border-l-2 border-cli-border pl-4 flex flex-col gap-1.5 hover:border-cli-green transition-colors duration-200">
